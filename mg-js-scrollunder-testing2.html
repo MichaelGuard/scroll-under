@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<title>To Do</title>
+        <!--<link rel="stylesheet" type="text/css" href="css/styles.css"/>-->
+
+        <style type="text/css">
+       	body {
+       		width:995px;
+       		margin:0;
+       		padding:0;
+       	}
+
+		.div1{
+			position:fixed;
+		    height:100px;
+			width:100%;
+			background-color:tomato;
+			font-family:arial;
+			font-weight:bold;
+			color:#ffffff;
+			z-index:99999;  
+		}
+
+		.div-wrapper {
+			position:relative;
+			top:101px;
+		}
+
+		.div2{
+			
+		    height:75px;
+			width:100%;
+			background-color:yellow;
+			font-family:arial;
+			font-weight:bold;
+			color:#ffffff;  
+		}
+
+		.div3{
+			top:176px;
+		    height:100px;
+			width:100%;
+			background-color:blue;
+			font-family:arial;
+			font-weight:bold;
+			color:#ffffff;  
+		}
+
+		.div4{
+		    height:800px;
+			width:100%;
+			background-color:green;
+			font-family:arial;
+			font-weight:bold;
+			color:#ffffff;  
+		}
+		.change-to-fixed {
+			position:fixed;
+		}
+        </style>
+        <script type="text/javascript" src="../js/jquery-1.9.1.js"></script>
+        <!--<script type="text/javascript" src="js/script.js"></script>-->
+	</head>
+	<body>
+		<div class="div1">Hello</div>
+		<div class="div-wrapper">
+			<div class="div2">Hello</div>
+			<div id="stopTop" class="div3">Stop me at the bottom of the tomato div</div>
+			<div class="div4">
+				<p style="margin-top:400px;color:white;">Hello</p></div>
+		</div>
+		<script type="text/javascript">
+		/*$("#stopTop").click(function(){
+  		x=$(".div4").position();
+  		//alert("Top: " + x.top + " Left: " + x.left);
+		});
+
+		$(window).scroll(function () {
+		    var top = $(window).scrollTop();
+		    if(top == 100px)
+		    {   console.log("Top: " + x.top + " Left: " + x.left);
+		    	$("#stopTop").addClass('change-to-fixed');
+		}
+});*/
+		var divTop = $('.div3');
+		var secondDiv = ('.div2');
+		//var divFour = $('div4');
+		var divTopPos = divTop.offset().top;
+		//alert("Top: " +divTopPos);
+		var win = $(window);
+
+		win.scroll(function(e){
+			var scrollTop = win.scrollTop();
+			if(scrollTop<=divTopPos){
+				divTop.css({position:'fixed',top:100});
+				//divFour.css({height: 'auto'});
+				//$(".div2").slideUp('slow');
+				secondDiv.slideUp('slow');
+				divTop.slideUp('slow');
+
+			}
+		})
+
+		</script>
+	</body>
+</html>
